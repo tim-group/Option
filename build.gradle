@@ -15,6 +15,7 @@ dependencies {
 }
 
 repositories {
+    mavenCentral()
     mavenRepo name: 'lambdaj', urls: 'http://lambdaj.googlecode.com/svn/repo/releases'
 }
 
