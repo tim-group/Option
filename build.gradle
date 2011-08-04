@@ -1,0 +1,28 @@
+releaseVersion = '1.0'
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+
+dependencies {
+    compile     group: 'com.googlecode.lambdaj',        name: 'lambdaj',                version: '2.3.1'
+
+    testCompile     group: "junit",         name: 'junit-dep',           version: "4.8.2"
+    testCompile     group: 'org.hamcrest',  name: 'hamcrest-all',        version: '1.2'
+    testCompile    (group: 'org.mockito',   name: 'mockito-core',        version: '1.8.5') {
+              exclude module: 'hamcrest-core'
+    }
+}
+
+repositories {
+    mavenRepo name: 'lambdaj', urls: 'http://lambdaj.googlecode.com/svn/repo/releases'
+}
+
+task sourcesJar(type: Jar, dependsOn:classes) {
+     classifier = 'sources'
+     from sourceSets.main.allSource
+}
+
+artifacts {
+     archives sourcesJar
+}
