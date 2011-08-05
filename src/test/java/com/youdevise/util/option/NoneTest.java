@@ -23,7 +23,6 @@ public class NoneTest {
 
     private final Integer anotherObject = valueOf(2);
 
-
     @Test
     public void isDefined() {
         assertThat(None().isDefined(), is(false));
@@ -42,8 +41,7 @@ public class NoneTest {
     @Test
     public void getOrElseClosure() {
         assertThat(None(Integer.class).getOrElse(new Function0<Integer>() {
-            @Override
-            public Integer apply() {
+            @Override public Integer apply() {
                 return anotherObject;
             }
         }), is(anotherObject));
@@ -62,8 +60,7 @@ public class NoneTest {
     @Test
     public void doWith() {
         None(AClass.class).execute(new Unit<AClass>() {
-            @Override
-            public void execute(AClass input) {
+            @Override public void execute(AClass input) {
                 input.aMethod();
             }
         });
@@ -72,8 +69,7 @@ public class NoneTest {
     @Test
     public void filterInclude() {
         assertThat(None(Integer.class).filter(new Predicate<Integer>() {
-            @Override
-            public Boolean apply(Integer input) {
+            @Override public Boolean apply(Integer input) {
                 return true;
             }
         }), is(None(Integer.class)));
@@ -82,8 +78,7 @@ public class NoneTest {
     @Test
     public void filterExclude() {
         assertThat(None(Integer.class).filter(new Predicate<Integer>() {
-            @Override
-            public Boolean apply(Integer input) {
+            @Override public Boolean apply(Integer input) {
                 return false;
             }
         }), is(None(Integer.class)));
@@ -102,8 +97,7 @@ public class NoneTest {
     @Test
     public void map() {
         assertThat(None(Integer.class).map(new Function<Integer, String>() {
-            @Override
-            public String apply(Integer from) {
+            @Override public String apply(Integer from) {
                 return from.toString();
             }
         }), is(None(String.class)));
@@ -112,8 +106,7 @@ public class NoneTest {
     @Test
     public void flatMap() {
         assertThat(None(Integer.class).flatMap(new Function<Integer, Option<String>>() {
-            @Override
-            public Option<String> apply(Integer from) {
+            @Override public Option<String> apply(Integer from) {
                 return Some(from.toString());
             }
         }), is(None(String.class)));
@@ -133,8 +126,7 @@ public class NoneTest {
     @Test
     public void orElseClosure() {
         assertThat(None(Integer.class).orElse(new Function0<Option<Integer>>() {
-            @Override
-            public Option<Integer> apply() {
+            @Override public Option<Integer> apply() {
                 return Some(anotherObject);
             }
         }), is(Some(anotherObject)));

@@ -17,7 +17,7 @@ public class None<T> extends Option<T> {
     private static final int NONE_HASH_CODE = 12345;
 
     @SuppressWarnings("rawtypes")
-    public static final Option<?> None = new None();
+    private static final Option<?> None = new None();
 
     @SuppressWarnings("unchecked")
     public static <M> Option<M> None() {

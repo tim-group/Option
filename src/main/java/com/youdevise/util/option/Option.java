@@ -9,6 +9,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import static com.youdevise.util.option.Some.Some;
+
 /**
  * Represents a generic wrapper of an optional value.
  * The value may be either defined (represented by Some class) or undefined (represented by None class).
@@ -22,7 +24,7 @@ public abstract class Option<T> implements Iterable<T> {
      */
     @SuppressWarnings("unchecked")
     public static <M> Option<M> fromNullable(M nullableValue) {
-        return nullableValue == null ? (Option<M>) None.None : Some.Some(nullableValue);
+        return nullableValue == null ? None.<M>None() : Some(nullableValue);
     }
 
     /**
@@ -62,11 +64,13 @@ public abstract class Option<T> implements Iterable<T> {
 
     /**
      * Applies the transformation (that results in an option) to the wrapped value and returns the result.
+     * Results in None if the instance on which it's called is None or the result of the transformation is None.
      */
     public abstract <M> Option<M> flatMap(Function<T, Option<M>> function);
 
     /**
      * Applies the transformation (defined by the LambdaJ argument) to the wrapped value and returns the result.
+     * Results in None if the instance on which it's called is None or the result of the transformation is None.
      */
     public abstract <M> Option<M> flatMap(Option<M> lambdaArgument);
 

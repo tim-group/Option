@@ -47,8 +47,7 @@ public class SomeTest {
     @Test
     public void getOrElseClosure() {
         assertThat(Some(object).getOrElse(new Function0<Integer>() {
-            @Override
-            public Integer apply() {
+            @Override public Integer apply() {
                 return anotherObject;
             }
         }), is(object));
@@ -81,8 +80,7 @@ public class SomeTest {
     @Test
     public void filterInclude() {
         assertThat(Some(object).filter(new Predicate<Integer>() {
-            @Override
-            public Boolean apply(Integer input) {
+            @Override public Boolean apply(Integer input) {
                 return true;
             }
         }), is(Some(object)));
@@ -91,8 +89,7 @@ public class SomeTest {
     @Test
     public void filterExclude() {
         assertThat(Some(object).filter(new Predicate<Integer>() {
-            @Override
-            public Boolean apply(Integer input) {
+            @Override public Boolean apply(Integer input) {
                 return false;
             }
         }), is(None(Integer.class)));
@@ -111,21 +108,28 @@ public class SomeTest {
     @Test
     public void map() {
         assertThat(Some(object).map(new Function<Integer, String>() {
-            @Override
-            public String apply(Integer from) {
+            @Override public String apply(Integer from) {
                 return from.toString();
             }
         }), is(Some("1")));
     }
 
     @Test
-    public void flatMap() {
+    public void flatMapToSome() {
         assertThat(Some(object).flatMap(new Function<Integer, Option<String>>() {
-            @Override
-            public Option<String> apply(Integer from) {
+            @Override public Option<String> apply(Integer from) {
                 return Some(from.toString());
             }
         }), is(Some("1")));
+    }
+
+    @Test
+    public void flatMapToNone() {
+        assertThat(Some(object).flatMap(new Function<Integer, Option<String>>() {
+            @Override public Option<String> apply(Integer from) {
+                return None(String.class);
+            }
+        }), is(None(String.class)));
     }
 
     @Test
@@ -144,8 +148,7 @@ public class SomeTest {
     @Test
     public void orElseClosure() {
         assertThat(Some(object).orElse(new Function0<Option<Integer>>() {
-            @Override
-            public Option<Integer> apply() {
+            @Override public Option<Integer> apply() {
                 return Some(anotherObject);
             }
         }), is(Some(object)));
@@ -187,34 +190,6 @@ public class SomeTest {
 
         public boolean trueMethod() {
             return true;
-        }
-    }
-
-    public static class ValueObject {
-        private final int value;
-
-        public ValueObject(Integer value) {
-            this.value = value;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
-
-            if (o == null || getClass() != o.getClass()) {
-                return false;
-            }
-
-            ValueObject that = (ValueObject) o;
-
-            return value == that.value;
-        }
-
-        @Override
-        public int hashCode() {
-            return value;
         }
     }
 }
