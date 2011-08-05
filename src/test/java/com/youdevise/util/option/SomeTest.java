@@ -29,6 +29,11 @@ public class SomeTest {
     private final Integer object = valueOf(1);
     private final Integer anotherObject = valueOf(2);
 
+    @Test(expected = IllegalArgumentException.class)
+    public void cannotCreateSomeWithNull() {
+        Some(null);
+    }
+
     @Test
     public void isDefined() {
         assertThat(Some(object).isDefined(), is(true));

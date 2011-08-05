@@ -24,6 +24,9 @@ public class Some<T> extends Option<T> {
     }
 
     private Some(T value) {
+        if (value == null) {
+            throw new IllegalArgumentException("Cannot create Some that contains null.");
+        }
         this.value = value;
     }
 
