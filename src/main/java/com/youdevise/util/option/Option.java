@@ -9,8 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import static com.youdevise.util.option.Some.Some;
-
 /**
  * Represents a generic wrapper of an optional value.
  * The value may be either defined (represented by Some class) or undefined (represented by None class).
@@ -24,7 +22,7 @@ public abstract class Option<T> implements Iterable<T> {
      */
     @SuppressWarnings("unchecked")
     public static <M> Option<M> fromNullable(M nullableValue) {
-        return nullableValue == null ? None.<M>None() : Some(nullableValue);
+        return nullableValue == null ? (Option<M>) None.None() : Some.Some(nullableValue);
     }
 
     /**
