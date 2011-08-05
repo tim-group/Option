@@ -61,31 +61,6 @@ public class Some<T> extends Option<T> {
         return argument(lambdaArgument).evaluate(get());
     }
 
-    private Object[] parameters(Object[] lambdaArguments) {
-        return transform(asList(lambdaArguments), new Function<Object, Object>() {
-            @Override public Object apply(Object from) {
-                return argumentValue(from);
-            }
-        }).toArray(new Object[lambdaArguments.length]);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private Class[] parameterClasses(Object[] lambdaArguments) {
-        return transform(asList(lambdaArguments), new Function<Object, Class<?>>() {
-            @Override public Class<?> apply(Object from) {
-                return from.getClass();
-            }
-        }).toArray(new Class[lambdaArguments.length]);
-    }
-
-    private static <T, M> List<M> transform(List<T> objects, Function<T, M> function) {
-        List<M> result = new ArrayList<M>();
-        for (T object: objects) {
-            result.add(function.apply(object));
-        }
-        return result;
-    }
-
     @Override
     public <M> Option<M> flatMap(Function<T, Option<M>> function) {
         return function.apply(get());
