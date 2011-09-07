@@ -6,7 +6,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = "com.timgroup"
-version = projectVersion(project)
+version = version(project)
 
 dependencies {
     compile     group: 'com.googlecode.lambdaj',        name: 'lambdaj',                version: '2.3.1'
@@ -36,7 +36,7 @@ task wrapper(type: Wrapper) {
     gradleVersion = '0.9.2'
 }
 
-def projectVersion(Project project) {
+def version(Project project) {
     def releaseVersion = '0';
     if (project.hasProperty('releaseVersion') && !project.releaseVersion.isEmpty()) {
         releaseVersion = project.releaseVersion
