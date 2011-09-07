@@ -3,6 +3,10 @@ releaseVersion = '1.0'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'java'
+apply plugin: 'maven'
+
+group = "com.timgroup"
+version = projectVersion(project)
 
 dependencies {
     compile     group: 'com.googlecode.lambdaj',        name: 'lambdaj',                version: '2.3.1'
@@ -30,4 +34,20 @@ artifacts {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '0.9.2'
+}
+
+def projectVersion(Project project) {
+    def releaseVersion = '0';
+    if (project.hasProperty('releaseVersion') && !project.releaseVersion.isEmpty()) {
+        releaseVersion = project.releaseVersion
+    }
+
+    String projectVersion
+    def ciBuildNumber = System.getenv("BUILD_NUMBER")
+    if (ciBuildNumber == null || ciBuildNumber.isEmpty()) {
+        projectVersion = releaseVersion + '.0.' + (new Date()).format("yyyyMMdd-HHmmss") + '-dev'
+    } else {
+        projectVersion = releaseVersion + '.' + ciBuildNumber
+    }
+    return projectVersion
 }
