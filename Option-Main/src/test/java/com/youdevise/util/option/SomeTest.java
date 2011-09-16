@@ -1,13 +1,12 @@
 package com.youdevise.util.option;
 
-import java.util.Iterator;
-
 import com.youdevise.util.Function;
 import com.youdevise.util.Function0;
 import com.youdevise.util.Predicate;
 import com.youdevise.util.Unit;
-
 import org.junit.Test;
+
+import java.util.Iterator;
 
 import static ch.lambdaj.Lambda.on;
 import static com.youdevise.util.option.None.None;

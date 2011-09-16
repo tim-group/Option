@@ -5,8 +5,6 @@ import com.youdevise.util.Function0;
 import com.youdevise.util.Predicate;
 import com.youdevise.util.Unit;
 
-import java.lang.reflect.Constructor;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;

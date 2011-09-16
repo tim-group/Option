@@ -1,39 +1,66 @@
-releaseVersion = '1.0'
+allprojects {
+  apply plugin: 'java'
+  apply plugin: 'idea'
+  apply plugin: 'eclipse'
+  apply plugin: 'maven'
 
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'java'
-apply plugin: 'maven'
+  group = "com.timgroup"
+  releaseVersion = '1.0'
+  version = version(project)
 
-group = "com.timgroup"
-version = version(project)
 
-dependencies {
-    compile     group: 'com.googlecode.lambdaj',        name: 'lambdaj',                version: '2.3.1'
-
+  dependencies {
     testCompile     group: "junit",         name: 'junit-dep',           version: "4.9"
     testCompile     group: 'org.hamcrest',  name: 'hamcrest-all',        version: '1.2'
     testCompile    (group: 'org.mockito',   name: 'mockito-core',        version: '1.8.5') {
               exclude module: 'hamcrest-core'
     }
-}
+  }
 
-repositories {
-    mavenCentral()
-    mavenRepo name: 'lambdaj', urls: 'http://lambdaj.googlecode.com/svn/repo/releases'
-}
+  repositories {
+      mavenCentral()
+      mavenRepo name: 'lambdaj', urls: 'http://lambdaj.googlecode.com/svn/repo/releases'
+  }
 
-task sourcesJar(type: Jar, dependsOn:classes) {
+  task wrapper(type: Wrapper) {
+      gradleVersion = '0.9.2'
+  }
+
+  task sourcesJar(type: Jar, dependsOn:classes) {
      classifier = 'sources'
      from sourceSets.main.allSource
+  }
+
+  artifacts {
+       archives sourcesJar
+  }
 }
 
-artifacts {
-     archives sourcesJar
+project('Option-Utils') {
+  dependencies {
+      compile     project(':Option-Main')
+      compile     group: 'com.google.guava',              name: 'guava',                  version: 'r09'
+  }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '0.9.2'
+project('Option-Main') {
+  dependencies {
+    compile     project(':Functional')
+    compile     group: 'com.googlecode.lambdaj',        name: 'lambdaj',                version: '2.3.1'
+  }
+}
+
+dependsOnChildren()
+
+subprojects.each { subproject ->
+    evaluationDependsOn(subproject.path)
+}
+
+task jarAll(type: Jar, dependsOn: subprojects.assemble) {
+    baseName = 'Option-all'
+    subprojects.each { subproject ->
+        from subproject.configurations.archives.allArtifactFiles.collect { zipTree(it) }
+    }
 }
 
 def version(Project project) {
@@ -71,8 +98,8 @@ uploadArchives {
       inceptionYear '2011'
 
       scm {
-        url 'scm:git:file:///Users/andre/Development/gcontracts'
-        connection 'scm:git:file:///Users/andre/Development/gcontracts'
+        url 'https://github.com/youdevise/Option'
+        connection 'https://github.com/youdevise/Option'
       }
 
       licenses {
