@@ -1,4 +1,4 @@
-package com.youdevise.util.option;
+package com.timgroup.option.util;
 
 import org.junit.Test;
 
@@ -7,7 +7,7 @@ import static junit.framework.Assert.assertEquals;
 public class OptionMapTest {
     @Test public void
     optionMapTest() {
-       com.youdevise.util.option.OptionMap<String, String> map = new com.youdevise.util.option.OptionMap<String, String>();
+       OptionMap<String, String> map = new OptionMap<String, String>();
 
        map.put("foo", "bar");
 

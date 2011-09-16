@@ -1,9 +1,8 @@
-package com.youdevise.util.option;
+package com.timgroup.option;
 
-import com.youdevise.util.Function;
-import com.youdevise.util.Function0;
-import com.youdevise.util.Predicate;
-import com.youdevise.util.Unit;
+import com.timgroup.functional.Function;
+import com.timgroup.functional.Function0;
+import com.timgroup.functional.Unit;
 
 import java.util.Iterator;
 import java.util.List;
@@ -75,7 +74,7 @@ public abstract class Option<T> implements Iterable<T> {
     /**
      * Results in Some, if the wrapped value meets the predicate, None otherwise.
      */
-    public abstract Option<T> filter(Predicate<T> predicate);
+    public abstract Option<T> filter(Function<T, Boolean> predicate);
 
     /**
      * Results in Some, if the lambdaJ argument value is true, None otherwise.

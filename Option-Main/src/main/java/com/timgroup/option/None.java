@@ -1,9 +1,8 @@
-package com.youdevise.util.option;
+package com.timgroup.option;
 
-import com.youdevise.util.Function;
-import com.youdevise.util.Function0;
-import com.youdevise.util.Predicate;
-import com.youdevise.util.Unit;
+import com.timgroup.functional.Function;
+import com.timgroup.functional.Function0;
+import com.timgroup.functional.Unit;
 
 import java.util.Iterator;
 import java.util.List;
@@ -74,7 +73,7 @@ public class None<T> extends Option<T> {
     }
 
     @Override
-    public Option<T> filter(Predicate<T> predicate) {
+    public Option<T> filter(Function<T, Boolean> predicate) {
         return None();
     }
 

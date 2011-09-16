@@ -1,8 +1,9 @@
-package com.youdevise.util.option;
+package com.timgroup.option.util;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-import com.youdevise.util.Function;
+import com.timgroup.functional.Function;
+import com.timgroup.option.Option;
 
 import java.util.ArrayList;
 import java.util.Collection;

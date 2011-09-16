@@ -1,4 +1,6 @@
-package com.youdevise.util.option;
+package com.timgroup.option.util;
+
+import com.timgroup.option.Option;
 
 import java.util.Map;
 

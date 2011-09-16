@@ -1,13 +1,14 @@
-package com.youdevise.util.option;
+package com.timgroup.option.util;
 
-import com.youdevise.util.Function;
+import com.timgroup.functional.Function;
+import com.timgroup.option.Option;
 import org.junit.Test;
 
 import java.util.List;
 
-import static com.youdevise.util.option.None.None;
-import static com.youdevise.util.option.OptionArrayList.newOptionArrayList;
-import static com.youdevise.util.option.Some.Some;
+import static com.timgroup.option.None.None;
+import static com.timgroup.option.Some.Some;
+import static com.timgroup.option.util.OptionArrayList.newOptionArrayList;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

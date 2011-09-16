@@ -1,6 +1,7 @@
-package com.youdevise.util.option;
+package com.timgroup.option.util;
 
-import com.youdevise.util.Function;
+import com.timgroup.option.Option;
+import com.timgroup.functional.Function;
 
 import java.util.List;
 

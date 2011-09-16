@@ -1,17 +1,17 @@
-package com.youdevise.util.option;
+package com.timgroup.option;
 
-import com.youdevise.util.Function;
-import com.youdevise.util.Function0;
-import com.youdevise.util.Predicate;
-import com.youdevise.util.Unit;
+import com.timgroup.functional.Function;
+import com.timgroup.functional.Function0;
+import com.timgroup.functional.Predicate;
+import com.timgroup.functional.Unit;
 import org.junit.Test;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import static ch.lambdaj.Lambda.on;
-import static com.youdevise.util.option.None.None;
-import static com.youdevise.util.option.Some.Some;
+import static com.timgroup.option.None.None;
+import static com.timgroup.option.Some.Some;
 import static java.lang.Integer.valueOf;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.emptySet;
