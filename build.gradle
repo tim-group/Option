@@ -11,7 +11,7 @@ allprojects {
 
   dependencies {
     testCompile     group: "junit",         name: 'junit-dep',           version: "4.9"
-    testCompile     group: 'org.hamcrest',  name: 'hamcrest-all',        version: '1.2'
+    testCompile     group: 'org.hamcrest',  name: 'hamcrest-all',        version: '1.1'
     testCompile    (group: 'org.mockito',   name: 'mockito-core',        version: '1.8.5') {
               exclude module: 'hamcrest-core'
     }
