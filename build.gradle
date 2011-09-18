@@ -19,7 +19,6 @@ allprojects {
 
   repositories {
       mavenCentral()
-      mavenRepo name: 'lambdaj', urls: 'http://lambdaj.googlecode.com/svn/repo/releases'
   }
 
   task wrapper(type: Wrapper) {
@@ -47,6 +46,21 @@ project('Option-Main') {
     compile     project(':Functional')
     compile     group: 'com.googlecode.lambdaj',        name: 'lambdaj',                version: '2.3.1'
   }
+
+    repositories {
+        mavenRepo name: 'lambdaj', urls: 'http://lambdaj.googlecode.com/svn/repo/releases'
+    }
+}
+
+project('Functional-Lambda') {
+    dependencies {
+      compile     project(':Functional')
+      compile     group: 'com.googlecode.lambdaj',        name: 'lambdaj',                version: '2.3.1'
+    }
+
+    repositories {
+        mavenRepo name: 'lambdaj', urls: 'http://lambdaj.googlecode.com/svn/repo/releases'
+    }
 }
 
 dependsOnChildren()
