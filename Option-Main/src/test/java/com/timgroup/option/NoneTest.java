@@ -85,16 +85,6 @@ public class NoneTest {
     }
 
     @Test
-    public void lambdaFilterInclude() {
-        assertThat(None().filter(on(AClass.class).trueMethod()), is(None()));
-    }
-
-    @Test
-    public void lambdaFilterExclude() {
-        assertThat(None().filter(on(AClass.class).falseMethod()), is(None()));
-    }
-
-    @Test
     public void map() {
         assertThat(None(Integer.class).map(new Function<Integer, String>() {
             @Override public String apply(Integer from) {

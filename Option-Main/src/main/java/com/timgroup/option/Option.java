@@ -77,11 +77,6 @@ public abstract class Option<T> implements Iterable<T> {
     public abstract Option<T> filter(Function<T, Boolean> predicate);
 
     /**
-     * Results in Some, if the lambdaJ argument value is true, None otherwise.
-     */
-    public abstract Option<T> filter(Boolean lambdaArgument);
-
-    /**
      * Returns this option if it is defined, or the given alternative otherwise.
      */
     public abstract Option<T> orElse(Option<T> alternative);

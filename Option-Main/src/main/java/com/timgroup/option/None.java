@@ -78,11 +78,6 @@ public class None<T> extends Option<T> {
     }
 
     @Override
-    public Option<T> filter(Boolean lambdaArgument) {
-        return None();
-    }
-
-    @Override
     public Set<T> toSet() {
         return emptySet();
     }

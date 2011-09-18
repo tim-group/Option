@@ -100,16 +100,6 @@ public class SomeTest {
     }
 
     @Test
-    public void lambdaFilterInclude() {
-        assertThat(Some(instance).filter(on(AClass.class).trueMethod()), is(Some(instance)));
-    }
-
-    @Test
-    public void lambdaFilterExclude() {
-        assertThat(Some(instance).filter(on(AClass.class).falseMethod()), is(None(AClass.class)));
-    }
-
-    @Test
     public void map() {
         assertThat(Some(object).map(new Function<Integer, String>() {
             @Override public String apply(Integer from) {

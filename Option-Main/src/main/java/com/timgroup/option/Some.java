@@ -81,11 +81,6 @@ public class Some<T> extends Option<T> {
     }
 
     @Override
-    public Option<T> filter(Boolean lambdaArgument) {
-        return argumentValue(lambdaArgument) ? this : None();
-    }
-
-    @Override
     public Option<T> orElse(Option<T> alternative) {
         return this;
     }
