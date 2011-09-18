@@ -39,7 +39,6 @@ allprojects {
 project('Option-Utils') {
   dependencies {
       compile     project(':Option-Main')
-      compile     group: 'com.google.guava',              name: 'guava',                  version: 'r09'
   }
 }
 

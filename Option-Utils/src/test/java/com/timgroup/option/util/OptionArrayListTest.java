@@ -17,21 +17,21 @@ import static org.junit.Assert.assertThat;
 public class OptionArrayListTest {
     @SuppressWarnings("unchecked")
     @Test public void
-    testMap() {
+    map() {
         OptionArrayList<String> list = newOptionArrayList(newOptionArrayList(Some(1), None(Integer.class)).map(intToString()));
         assertThat(list, is(newOptionArrayList(Some("1"), None(String.class))));
     }
 
     @SuppressWarnings("unchecked")
     @Test public void
-    testFlatMap() {
+    flatMap() {
         OptionArrayList<String> list = newOptionArrayList(newOptionArrayList(Some(1), None(Integer.class)).flatMap(intToSomeString()));
         assertThat(list, is(newOptionArrayList(Some("1"), None(String.class))));
     }
 
     @SuppressWarnings("unchecked")
     @Test public void
-    testFlatten() {
+    flatten() {
         List<Integer> list = newOptionArrayList(Some(1), None(Integer.class)).flatten();
         assertThat(list, is(asList(1)));
     }

@@ -2,13 +2,12 @@ package com.timgroup.option.util;
 
 import com.timgroup.option.Option;
 
+import java.util.HashMap;
 import java.util.Map;
-
-import static com.google.common.collect.Maps.newHashMap;
 
 public class OptionMap<K, V> {
 
-    private final Map<K, V> map = newHashMap();
+    private final Map<K, V> map = new HashMap<K, V>();
     
     public void clear() {
         map.clear();
