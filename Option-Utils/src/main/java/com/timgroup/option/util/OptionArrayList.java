@@ -44,7 +44,7 @@ public class OptionArrayList<E> extends ArrayList<Option<E>> implements OptionLi
 
     @Override
     public List<E> flatten() {
-        final OptionArrayList result = newOptionArrayList();
+        final List<E> result = new ArrayList<E>();
         for (Option<E> element : this) {
             if (element.isDefined()) {
                 result.add(element.get());

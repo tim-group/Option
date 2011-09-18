@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
 public class OptionMapTest {
     @Test public void
     get_returns_some_for_values_contained_in_the_map_and_none_for_values_not_contained_in_the_map() {
-       OptionMap<String, String> map = new OptionMap();
+       OptionMap<String, String> map = new OptionMap<String, String>();
 
        map.put("foo", "bar");
 
