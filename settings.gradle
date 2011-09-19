@@ -1,1 +1,1 @@
-include 'Functional', 'Option-Main', 'Functional-Lambda', 'Option-Utils'
+include 'Functional', 'Option-Main', 'Functional-Lambda', 'Option-Utils', 'Option-Scala'
