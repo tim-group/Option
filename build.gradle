@@ -81,7 +81,8 @@ subprojects.each { subproject ->
 task jarAll(type: Jar, dependsOn: subprojects.assemble) {
     baseName = 'Option-all'
     subprojects.each { subproject ->
-        from subproject.configurations.archives.allArtifactFiles.collect { zipTree(it) }
+        if (!subproject.name.contains('Scala'))
+            from subproject.configurations.archives.allArtifactFiles.collect { zipTree(it) }
     }
 }
 
