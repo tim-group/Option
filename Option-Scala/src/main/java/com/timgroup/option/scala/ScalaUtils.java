@@ -11,7 +11,7 @@ public class ScalaUtils {
         if (javaOption.isDefined()) {
             return new Some<T>(javaOption.get());
         }
-        return (Option<T>)scala.None$.MODULE$;
+        return ScalaNone();
     }
 
     public static <T> com.timgroup.option.Option<T> toJava(Option<T> scalaOption) {
@@ -21,8 +21,8 @@ public class ScalaUtils {
         return None.<T>None();
     }
 
-    public static <T> scala.None ScalaNone() {
-        return scala.None$.MODULE$;
+    public static <T> scala.Option<T> ScalaNone() {
+        return (Option<T>)scala.None$.MODULE$;
     }
 
     public static <T> scala.Option<T> ScalaNone(Class<T> clas) {
