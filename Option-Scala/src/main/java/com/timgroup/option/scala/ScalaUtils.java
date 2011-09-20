@@ -20,4 +20,12 @@ public class ScalaUtils {
         }
         return None.<T>None();
     }
+
+    public static <T> scala.None ScalaNone() {
+        return scala.None$.MODULE$;
+    }
+
+    public static <T> scala.Option<T> ScalaNone(Class<T> clas) {
+        return ScalaNone();
+    }
 }
