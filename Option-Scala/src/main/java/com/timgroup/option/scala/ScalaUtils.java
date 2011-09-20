@@ -26,6 +26,6 @@ public class ScalaUtils {
     }
 
     public static <T> scala.Option<T> ScalaNone(Class<T> clas) {
-        return ScalaNone();
+        return ScalaUtils.<T>ScalaNone();
     }
 }
