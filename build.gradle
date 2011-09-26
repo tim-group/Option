@@ -43,7 +43,7 @@ project('Option-Utils') {
 
 project('Option-Main') {
   dependencies {
-    compile     project(':Functional')
+    compile     group: 'com.timgroup',                  name: 'Functional',             version: '1.0'
     compile     group: 'com.googlecode.lambdaj',        name: 'lambdaj',                version: '2.3.1'
   }
 
@@ -59,17 +59,6 @@ project('Option-Scala') {
     compile     project(':Option-Main')
     compile     "org.scala-lang:scala-library:$scalaVersion"
   }
-}
-
-project('Functional-Lambda') {
-    dependencies {
-      compile     project(':Functional')
-      compile     group: 'com.googlecode.lambdaj',        name: 'lambdaj',                version: '2.3.1'
-    }
-
-    repositories {
-        mavenRepo name: 'lambdaj', urls: 'http://lambdaj.googlecode.com/svn/repo/releases'
-    }
 }
 
 dependsOnChildren()
